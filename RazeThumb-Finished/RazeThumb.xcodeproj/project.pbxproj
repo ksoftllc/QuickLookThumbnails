@@ -54,12 +54,9 @@
 		18D775BF22AD944300AE281E /* RazeThumb */ = {
 			isa = PBXGroup;
 			children = (
-				1839F4AF25190F2A00BB00F1 /* AppMain.swift */,
-				18D775C422AD944300AE281E /* ContentView.swift */,
-				18D775C622AD944400AE281E /* Assets.xcassets */,
-				18D775DA22AD963800AE281E /* LaunchScreen.storyboard */,
-				18D775CE22AD944400AE281E /* Info.plist */,
 				38EB105325741A14002696ED /* Documents */,
+				38EB105725742232002696ED /* Sources */,
+				38EB105825742246002696ED /* Supporting Files */,
 			);
 			path = RazeThumb;
 			sourceTree = "<group>";
@@ -69,6 +66,25 @@
 			children = (
 			);
 			path = Documents;
+			sourceTree = "<group>";
+		};
+		38EB105725742232002696ED /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1839F4AF25190F2A00BB00F1 /* AppMain.swift */,
+				18D775C422AD944300AE281E /* ContentView.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		38EB105825742246002696ED /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				18D775C622AD944400AE281E /* Assets.xcassets */,
+				18D775DA22AD963800AE281E /* LaunchScreen.storyboard */,
+				18D775CE22AD944400AE281E /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,7 +322,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 9YGD2MC2Z6;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = RazeThumb/Info.plist;
+				INFOPLIST_FILE = "RazeThumb/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -326,7 +342,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 9YGD2MC2Z6;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = RazeThumb/Info.plist;
+				INFOPLIST_FILE = "RazeThumb/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
