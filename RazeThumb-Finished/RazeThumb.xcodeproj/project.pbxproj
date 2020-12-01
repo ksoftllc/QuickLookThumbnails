@@ -11,6 +11,10 @@
 		18D775C522AD944300AE281E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D775C422AD944300AE281E /* ContentView.swift */; };
 		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
 		18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D775DA22AD963800AE281E /* LaunchScreen.storyboard */; };
+		384AEA3B2575D5070062310B /* DocumentThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384AEA3A2575D5070062310B /* DocumentThumbnailView.swift */; };
+		38EB106125744349002696ED /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EB106025744349002696ED /* Document.swift */; };
+		38EB1064257465DA002696ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EB1063257465DA002696ED /* AppDelegate.swift */; };
+		38EB106725746973002696ED /* zombiethumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 38EB106625746973002696ED /* zombiethumb.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +24,10 @@
 		18D775C622AD944400AE281E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18D775CE22AD944400AE281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D775DE22AD96B400AE281E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		384AEA3A2575D5070062310B /* DocumentThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentThumbnailView.swift; sourceTree = "<group>"; };
+		38EB106025744349002696ED /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		38EB1063257465DA002696ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		38EB106625746973002696ED /* zombiethumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zombiethumb.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,25 +62,29 @@
 		18D775BF22AD944300AE281E /* RazeThumb */ = {
 			isa = PBXGroup;
 			children = (
-				38EB105325741A14002696ED /* Documents */,
+				38EB105325741A14002696ED /* Resources */,
 				38EB105725742232002696ED /* Sources */,
 				38EB105825742246002696ED /* Supporting Files */,
 			);
 			path = RazeThumb;
 			sourceTree = "<group>";
 		};
-		38EB105325741A14002696ED /* Documents */ = {
+		38EB105325741A14002696ED /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				38EB106625746973002696ED /* zombiethumb.png */,
 			);
-			path = Documents;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		38EB105725742232002696ED /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				1839F4AF25190F2A00BB00F1 /* AppMain.swift */,
+				38EB1063257465DA002696ED /* AppDelegate.swift */,
 				18D775C422AD944300AE281E /* ContentView.swift */,
+				38EB106025744349002696ED /* Document.swift */,
+				384AEA3A2575D5070062310B /* DocumentThumbnailView.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -146,6 +158,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38EB106725746973002696ED /* zombiethumb.png in Resources */,
 				18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */,
 				18D775C722AD944400AE281E /* Assets.xcassets in Resources */,
 			);
@@ -179,8 +192,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38EB1064257465DA002696ED /* AppDelegate.swift in Sources */,
 				18D775C522AD944300AE281E /* ContentView.swift in Sources */,
+				384AEA3B2575D5070062310B /* DocumentThumbnailView.swift in Sources */,
 				1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */,
+				38EB106125744349002696ED /* Document.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
