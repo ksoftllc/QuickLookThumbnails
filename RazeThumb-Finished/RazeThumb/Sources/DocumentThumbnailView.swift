@@ -38,9 +38,9 @@ struct DocumentThumbnailView: View {
 
   init(for document: Document) {
     self.document = document
-//    document.generateThumbnail { thumbnailImage in
-//      self.thumbnail = thumbnailImage
-//    }
+    document.generateThumbnail { thumbnailImage in
+      self.thumbnail = thumbnailImage
+    }
   }
 
   var body: some View {
