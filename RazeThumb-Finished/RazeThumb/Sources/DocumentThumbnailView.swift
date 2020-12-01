@@ -34,32 +34,21 @@ import SwiftUI
 
 struct DocumentThumbnailView: View {
   let document: Document
-  @State var thumbnail: UIImage?
-
-  init(for document: Document) {
-    self.document = document
-    document.generateThumbnail { thumbnailImage in
-      self.thumbnail = thumbnailImage
-    }
-  }
+  @State var thumbnail: Image?
 
   var body: some View {
     HStack(alignment: .center) {
-      Group {
-        if let thumbnail = thumbnail {
-          Image(uiImage: thumbnail)
-            .frame(minWidth: 150, maxWidth: 150, minHeight: 150, alignment: .center)
-            .background(Color.gray)
-            .cornerRadius(10)
-            .padding()
-        } else {
-          Image(systemName: "doc")
-            .font(.system(size: 120))
-            .frame(minWidth: 150, maxWidth: 150, minHeight: 150, alignment: .center)
-            .background(Color.gray)
-            .cornerRadius(10)
-            .padding()
-        }
+      if thumbnail != nil {
+        thumbnail?
+          .frame(minWidth: 150, maxWidth: 150, minHeight: 150, maxHeight: 150, alignment: .center)
+          .cornerRadius(10)
+          .padding()
+      } else {
+        Image(systemName: "doc")
+          .font(.system(size: 120))
+          .frame(minWidth: 150, maxWidth: 150, minHeight: 150, maxHeight: 150, alignment: .center)
+          .cornerRadius(10)
+          .padding()
       }
       VStack(alignment: .leading) {
         Text("Name: \(document.name)")
@@ -67,6 +56,14 @@ struct DocumentThumbnailView: View {
         Text("Type: \(document.type)")
       }
       .frame(minWidth: 150, maxWidth: 200, minHeight: 150, alignment: .leading)
+    }
+    .background(Color.gray)
+    .onAppear {
+      document.generateThumbnail { [self] thumbnailImage in
+        DispatchQueue.main.async {
+          self.thumbnail = Image(uiImage: thumbnailImage)
+        }
+      }
     }
   }
 }

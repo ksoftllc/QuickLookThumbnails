@@ -46,7 +46,7 @@ struct ContentView: View {
         ]
       ) {
         ForEach(documents, id: \.self) { document in
-          DocumentThumbnailView(for: document)
+          DocumentThumbnailView(document: document)
         }
       }
       .padding(.vertical)

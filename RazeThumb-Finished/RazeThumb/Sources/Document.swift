@@ -51,6 +51,13 @@ struct Document: Hashable {
 
 // MARK: - Static helper methods
 extension Document {
+  static let files = [
+    Bundle.main.url(forResource: "zombiethumb", withExtension: "png"),
+    Bundle.main.url(forResource: "thumbsup", withExtension: "txt"),
+    Bundle.main.url(forResource: "humanthumb", withExtension: "pdf")
+  ]
+  .compactMap { $0 }
+
   static var documents: [Document] {
     documentsDirectoryContents.map { Document(url: $0) }
   }
@@ -71,11 +78,6 @@ extension Document {
   }
 
   static func copyResourcesToDocuments() {
-    let files = [
-      Bundle.main.url(forResource: "zombiethumb", withExtension: "png")
-    ]
-    .compactMap { $0 }
-
     files.forEach { url in
       let fileExists = documentsDirectoryContents.contains { $0.lastPathComponent == url.lastPathComponent }
 
@@ -110,7 +112,7 @@ extension Document {
         completion(thumbnail.uiImage)
       } else if let error = error {
         // Handle error
-        print(error)
+        print("thumbnail error for \(name).\(type) \(error)")
       }
     }
   }
