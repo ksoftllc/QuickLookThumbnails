@@ -42,7 +42,7 @@ struct ContentView: View {
     ScrollView(.vertical) {
       LazyVGrid(
         columns: [
-          .init(.flexible())
+          .init()
         ]
       ) {
         ForEach(documents, id: \.self) { document in

@@ -41,10 +41,10 @@ struct DocumentThumbnailView: View {
       thumbnail
         .font(.system(size: 120))
         .frame(minWidth: 150, maxWidth: 150, minHeight: 150, maxHeight: 150, alignment: .center)
-        .cornerRadius(10)
+        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         .padding()
     }
-    .fixedSize()
+    .groupBoxStyle(PlainGroupBoxStyle())
     .onAppear {
       document.generateThumbnail { [self] thumbnailImage in
         DispatchQueue.main.async {
@@ -52,5 +52,18 @@ struct DocumentThumbnailView: View {
         }
       }
     }
+  }
+}
+
+struct PlainGroupBoxStyle: GroupBoxStyle {
+  func makeBody(configuration: Configuration) -> some View {
+    VStack(alignment: .center) {
+      configuration.label
+        .padding()
+      configuration.content
+    }
+    .fixedSize()
+    .background(Color(.systemGroupedBackground))
+    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
   }
 }
