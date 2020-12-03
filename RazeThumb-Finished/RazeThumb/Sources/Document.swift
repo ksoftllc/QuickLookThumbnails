@@ -43,14 +43,6 @@ struct Document: Hashable {
   var fullName: String {
     url.lastPathComponent
   }
-
-  var name: String {
-    url.deletingPathExtension().lastPathComponent
-  }
-
-  var type: String {
-    url.pathExtension
-  }
 }
 
 // MARK: - Static helper methods
@@ -101,7 +93,7 @@ extension Document {
   }
 }
 
-// MARK: - QuickLookThumbnailing
+// MARK: - QLThumbnailGenerator
 extension Document {
   func generateThumbnail(completion: @escaping (UIImage) -> Void) {
     let size = CGSize(width: 150, height: 150)
@@ -118,8 +110,7 @@ extension Document {
       if let thumbnail = thumbnail {
         completion(thumbnail.uiImage)
       } else if let error = error {
-        // Handle error
-        print("thumbnail error for \(name).\(type) \(error)")
+        print("thumbnail error for \(fullName) - \(error)")
       }
     }
   }

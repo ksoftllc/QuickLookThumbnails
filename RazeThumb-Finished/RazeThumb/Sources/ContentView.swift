@@ -34,22 +34,24 @@ import SwiftUI
 
 struct ContentView: View {
   let documents = Document.documents
+  let title = "Thumbs"
 
   var body: some View {
-    Text("Documents")
-      .padding()
-      .font(.title)
-    ScrollView(.vertical) {
-      LazyVGrid(
-        columns: [
-          .init()
-        ]
-      ) {
-        ForEach(documents, id: \.self) { document in
-          DocumentThumbnailView(document: document)
+    NavigationView {
+      ScrollView(.vertical) {
+        LazyVGrid(
+          columns: [GridItem(.adaptive(minimum: 200, maximum: 200))],
+          spacing: 25
+        ) {
+          ForEach(documents, id: \.self) { document in
+            NavigationLink(destination: DocumentPreviewView(document: document)) {
+              DocumentThumbnailView(document: document)
+            }
+            .navigationTitle(title)
+          }
         }
       }
-      .padding(.vertical)
+      .navigationBarTitle(title)
     }
   }
 }

@@ -32,14 +32,11 @@
 
 import SwiftUI
 
-@main
-struct AppMain: App {
-  // swiftlint:disable:next weak_delegate
-  @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+struct DocumentPreviewView: View {
+  let document: Document
 
-  var body: some Scene {
-    WindowGroup {
-      ContentView()
-    }
+  var body: some View {
+    Text(document.fullName)
+      .navigationBarTitle(Text(document.fullName), displayMode: .inline)
   }
 }

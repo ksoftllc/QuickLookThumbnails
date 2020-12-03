@@ -62,7 +62,6 @@ struct PlainGroupBoxStyle: GroupBoxStyle {
         .padding()
       configuration.content
     }
-    .fixedSize()
     .background(Color(.systemGroupedBackground))
     .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
   }
