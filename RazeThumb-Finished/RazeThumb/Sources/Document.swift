@@ -40,6 +40,10 @@ struct Document: Hashable {
     self.url = url
   }
 
+  var fullName: String {
+    url.lastPathComponent
+  }
+
   var name: String {
     url.deletingPathExtension().lastPathComponent
   }

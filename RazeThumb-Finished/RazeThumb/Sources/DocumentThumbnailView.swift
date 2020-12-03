@@ -37,19 +37,14 @@ struct DocumentThumbnailView: View {
   @State var thumbnail = Image(systemName: "doc")
 
   var body: some View {
-    HStack(alignment: .center) {
+    GroupBox(label: Text(verbatim: document.fullName)) {
       thumbnail
         .font(.system(size: 120))
         .frame(minWidth: 150, maxWidth: 150, minHeight: 150, maxHeight: 150, alignment: .center)
         .cornerRadius(10)
         .padding()
-      VStack(alignment: .leading) {
-        Text("Name: \(document.name)")
-        Text("")
-        Text("Type: \(document.type)")
-      }
-      .frame(minWidth: 150, maxWidth: 200, minHeight: 150, alignment: .leading)
     }
+    .fixedSize()
     .onAppear {
       document.generateThumbnail { [self] thumbnailImage in
         DispatchQueue.main.async {
