@@ -54,39 +54,33 @@ extension Document {
   static let files = [
     Bundle.main.url(forResource: "zombiethumb", withExtension: "png"),
     Bundle.main.url(forResource: "thumbsup", withExtension: "txt"),
-    Bundle.main.url(forResource: "humanthumb", withExtension: "pdf")
+    Bundle.main.url(forResource: "humanthumb", withExtension: "pdf"),
+    Bundle.main.url(forResource: "thumbsdown", withExtension: "md")
   ]
   .compactMap { $0 }
 
   static var documents: [Document] {
-    documentsDirectoryContents.map { Document(url: $0) }
-  }
-
-  static var documentsDirectoryContents: [URL] {
-    guard let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-      return []
-    }
-
     let urls: [URL]
     do {
-      urls = try FileManager.default.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil)
+      urls = try FileManager.default.contentsOfDirectory(at: temporaryDirectoryURL, includingPropertiesForKeys: nil)
     } catch {
       fatalError("Couldn't load files from documents directory")
     }
 
-    return urls
+    return urls.map { Document(url: $0) }
   }
 
-  static func copyResourcesToDocuments() {
-    files.forEach { url in
-      let fileExists = documentsDirectoryContents.contains { $0.lastPathComponent == url.lastPathComponent }
+  static var temporaryDirectoryURL: URL {
+    URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
+  }
+
+  static func copyResourcesToTemporaryDirectory() {
+    files.forEach { resourceFileURL in
+      let filename = resourceFileURL.lastPathComponent
 
       do {
-        if !fileExists {
-          let newURL = FileManager.default
-            .urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(url.lastPathComponent)
-          try FileManager.default.copyItem(at: url, to: newURL)
-        }
+        let destinationURL = temporaryDirectoryURL.appendingPathComponent(filename)
+        try FileManager.default.copyItem(at: resourceFileURL, to: destinationURL)
       } catch {
         print(error.localizedDescription)
       }
