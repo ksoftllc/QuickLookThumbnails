@@ -34,22 +34,15 @@ import SwiftUI
 
 struct DocumentThumbnailView: View {
   let document: Document
-  @State var thumbnail: Image?
+  @State var thumbnail = Image(systemName: "doc")
 
   var body: some View {
     HStack(alignment: .center) {
-      if thumbnail != nil {
-        thumbnail?
-          .frame(minWidth: 150, maxWidth: 150, minHeight: 150, maxHeight: 150, alignment: .center)
-          .cornerRadius(10)
-          .padding()
-      } else {
-        Image(systemName: "doc")
-          .font(.system(size: 120))
-          .frame(minWidth: 150, maxWidth: 150, minHeight: 150, maxHeight: 150, alignment: .center)
-          .cornerRadius(10)
-          .padding()
-      }
+      thumbnail
+        .font(.system(size: 120))
+        .frame(minWidth: 150, maxWidth: 150, minHeight: 150, maxHeight: 150, alignment: .center)
+        .cornerRadius(10)
+        .padding()
       VStack(alignment: .leading) {
         Text("Name: \(document.name)")
         Text("")
@@ -57,7 +50,6 @@ struct DocumentThumbnailView: View {
       }
       .frame(minWidth: 150, maxWidth: 200, minHeight: 150, alignment: .leading)
     }
-    .background(Color.gray)
     .onAppear {
       document.generateThumbnail { [self] thumbnailImage in
         DispatchQueue.main.async {
