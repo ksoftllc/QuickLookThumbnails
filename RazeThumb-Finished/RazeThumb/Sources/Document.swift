@@ -55,6 +55,7 @@ extension Document {
     Bundle.main.url(forResource: "zombiethumb", withExtension: "png"),
     Bundle.main.url(forResource: "thumbsup", withExtension: "txt"),
     Bundle.main.url(forResource: "humanthumb", withExtension: "pdf"),
+    Bundle.main.url(forResource: "thumbsdown", withExtension: "html"),
     Bundle.main.url(forResource: "thumbsdown", withExtension: "md")
   ]
   .compactMap { $0 }
@@ -77,12 +78,20 @@ extension Document {
   static func copyResourcesToTemporaryDirectory() {
     files.forEach { resourceFileURL in
       let filename = resourceFileURL.lastPathComponent
+      let destinationURL = temporaryDirectoryURL.appendingPathComponent(filename)
+
+      if FileManager.default.fileExists(atPath: destinationURL.path) {
+        do {
+          try FileManager.default.removeItem(at: destinationURL)
+        } catch {
+          print("error deleting \(destinationURL) - \(error.localizedDescription)")
+        }
+      }
 
       do {
-        let destinationURL = temporaryDirectoryURL.appendingPathComponent(filename)
         try FileManager.default.copyItem(at: resourceFileURL, to: destinationURL)
       } catch {
-        print(error.localizedDescription)
+        print("error copying file \(destinationURL) to temporary directory - \(error.localizedDescription)")
       }
     }
   }
