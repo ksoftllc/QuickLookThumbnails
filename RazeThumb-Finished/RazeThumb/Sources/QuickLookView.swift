@@ -31,38 +31,42 @@
 /// THE SOFTWARE.
 
 import SwiftUI
+import QuickLook
 
-struct DocumentThumbnailView: View {
-  let document: Document
-  @State var thumbnail = Image(systemName: "doc")
+struct QuickLookView: UIViewControllerRepresentable {
+  var document: Document
 
-  var body: some View {
-    GroupBox(label: Text(verbatim: document.name)) {
-      thumbnail
-        .font(.system(size: 120))
-        .frame(minWidth: 150, maxWidth: 150, minHeight: 150, maxHeight: 150, alignment: .center)
-        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-        .padding()
-    }
-    .groupBoxStyle(PlainGroupBoxStyle())
-    .onAppear {
-      document.generateThumbnail(width: 150, height: 150) { [self] thumbnailImage in
-        DispatchQueue.main.async {
-          self.thumbnail = Image(uiImage: thumbnailImage)
-        }
-      }
-    }
+  func makeCoordinator() -> Coordinator {
+    Coordinator(self)
   }
-}
 
-struct PlainGroupBoxStyle: GroupBoxStyle {
-  func makeBody(configuration: Configuration) -> some View {
-    VStack(alignment: .center) {
-      configuration.label
-        .padding()
-      configuration.content
+  func updateUIViewController(_ viewController: QLPreviewController, context: UIViewControllerRepresentableContext<QuickLookView>) {
+    viewController.reloadData()
+  }
+
+  func makeUIViewController(context: Context) -> QLPreviewController {
+    let controller = QLPreviewController()
+
+    controller.dataSource = context.coordinator
+    controller.reloadData()
+    return controller
+  }
+
+  class Coordinator: NSObject, QLPreviewControllerDataSource {
+    var parent: QuickLookView
+
+    init(_ qlPreviewController: QuickLookView) {
+      self.parent = qlPreviewController
+      super.init()
     }
-    .background(Color(.systemGroupedBackground))
-    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+
+    // MARK: - QLPreviewControllerDataSource
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+      return 1
+    }
+
+    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+      return self.parent.document.url as QLPreviewItem
+    }
   }
 }

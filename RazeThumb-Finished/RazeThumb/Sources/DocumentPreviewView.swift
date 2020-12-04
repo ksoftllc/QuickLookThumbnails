@@ -36,7 +36,7 @@ struct DocumentPreviewView: View {
   let document: Document
 
   var body: some View {
-    Text(document.fullName)
-      .navigationBarTitle(Text(document.fullName), displayMode: .inline)
+    QuickLookView(document: document)
+      .navigationBarTitle(Text(document.name), displayMode: .inline)
   }
 }

@@ -32,6 +32,7 @@
 
 import UIKit.UIScreen
 import QuickLookThumbnailing
+import QuickLook
 
 struct Document: Hashable {
   let url: URL
@@ -40,7 +41,7 @@ struct Document: Hashable {
     self.url = url
   }
 
-  var fullName: String {
+  var name: String {
     url.lastPathComponent
   }
 }
@@ -48,11 +49,12 @@ struct Document: Hashable {
 // MARK: - Static helper methods
 extension Document {
   static let files = [
-    Bundle.main.url(forResource: "zombiethumb", withExtension: "png"),
-    Bundle.main.url(forResource: "thumbsup", withExtension: "txt"),
+    Bundle.main.url(forResource: "Images License", withExtension: "txt"),
+    Bundle.main.url(forResource: "zombiethumb", withExtension: "jpg"),
     Bundle.main.url(forResource: "humanthumb", withExtension: "pdf"),
-    Bundle.main.url(forResource: "thumbsdown", withExtension: "html"),
-    Bundle.main.url(forResource: "thumbsdown", withExtension: "md")
+    Bundle.main.url(forResource: "thumbsup", withExtension: "txt"),
+    Bundle.main.url(forResource: "thumbsdown", withExtension: "md"),
+    Bundle.main.url(forResource: "thumbsdown", withExtension: "html")
   ]
   .compactMap { $0 }
 
@@ -95,8 +97,8 @@ extension Document {
 
 // MARK: - QLThumbnailGenerator
 extension Document {
-  func generateThumbnail(completion: @escaping (UIImage) -> Void) {
-    let size = CGSize(width: 150, height: 150)
+  func generateThumbnail(width: Int, height: Int, completion: @escaping (UIImage) -> Void) {
+    let size = CGSize(width: width, height: height)
     let scale = UIScreen.main.scale
 
     let request = QLThumbnailGenerator.Request(
@@ -110,7 +112,7 @@ extension Document {
       if let thumbnail = thumbnail {
         completion(thumbnail.uiImage)
       } else if let error = error {
-        print("thumbnail error for \(fullName) - \(error)")
+        print("thumbnail error for \(name) - \(error)")
       }
     }
   }
