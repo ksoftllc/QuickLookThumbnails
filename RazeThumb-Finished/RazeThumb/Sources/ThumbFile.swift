@@ -43,4 +43,16 @@ struct ThumbFile: Codable {
       }
       self = thumb
   }
+
+  var asHtml: String {
+    return
+      """
+        <html>
+          <body>
+            <h2>\(title)</h2>
+            <img src="\(imageURL)" alt="image"/>
+          </body>
+        </html>
+      """
+  }
 }

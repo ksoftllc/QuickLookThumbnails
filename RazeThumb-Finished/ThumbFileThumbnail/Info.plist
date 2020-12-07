@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>ThumbThumbnail</string>
+	<string>ThumbFileThumbnail</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -25,14 +25,16 @@
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>QLSupportedContentTypes</key>
-			<array/>
+			<array>
+				<string>com.raywenderlich.RazeThumb.ThumbFile</string>
+			</array>
 			<key>QLThumbnailMinimumDimension</key>
 			<integer>0</integer>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.quicklook.thumbnail</string>
 		<key>NSExtensionPrincipalClass</key>
-		<string>ThumbnailProvider</string>
+		<string>$(PRODUCT_MODULE_NAME).ThumbnailProvider</string>
 	</dict>
 </dict>
 </plist>

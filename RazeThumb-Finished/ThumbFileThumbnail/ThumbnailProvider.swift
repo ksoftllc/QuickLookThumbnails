@@ -30,8 +30,52 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-#import <QuickLookThumbnailing/QuickLookThumbnailing.h>
+import UIKit
+import QuickLookThumbnailing
+import WebKit
 
-@interface ThumbnailProvider : QLThumbnailProvider
+class ThumbnailProvider: QLThumbnailProvider {
+  enum ThumbFileThumbnailError: Error {
+    case unableToOpenFile(atURL: URL)
+    case unableToCreateThumbnail(error: Error?)
+  }
 
-@end
+  override func provideThumbnail(for request: QLFileThumbnailRequest, _ handler: @escaping (QLThumbnailReply?, Error?) -> Void) {
+    let thumbFileURL = request.fileURL
+    guard let thumbFile = ThumbFile(from: thumbFileURL) else {
+      handler(nil, ThumbFileThumbnailError.unableToOpenFile(atURL: thumbFileURL))
+      return
+    }
+
+    let maximumSize = request.maximumSize
+    let scale = request.scale
+    let frame = CGRect(origin: .zero, size: maximumSize)
+
+    DispatchQueue.main.async {
+      let thumbFileView = WKWebView(frame: frame)
+      thumbFileView.loadHTMLString(thumbFile.asHtml, baseURL: nil)
+      thumbFileView.pageZoom = maximumSize.height / 1000.0
+      thumbFileView.layoutIfNeeded()
+
+      thumbFileView.takeSnapshot(with: nil) { snapshot, error in
+        guard var snapshot = snapshot else {
+          handler(nil, ThumbFileThumbnailError.unableToCreateThumbnail(error: error))
+          return
+        }
+
+        if snapshot.scale != scale,
+
+           let cgImage = snapshot.cgImage {
+          snapshot = UIImage(cgImage: cgImage, scale: scale, orientation: .up)
+        }
+
+        let reply = QLThumbnailReply(contextSize: maximumSize) {
+          snapshot.draw(at: .zero)
+          return true
+        }
+
+        handler(reply, nil)
+      }
+    }
+  }
+}

@@ -49,12 +49,12 @@ struct Document: Hashable {
 // MARK: - Static helper methods
 extension Document {
   static let files = [
-    Bundle.main.url(forResource: "Images License", withExtension: "txt"),
     Bundle.main.url(forResource: "zombiethumb", withExtension: "jpg"),
     Bundle.main.url(forResource: "humanthumb", withExtension: "pdf"),
     Bundle.main.url(forResource: "thumbsup", withExtension: "txt"),
     Bundle.main.url(forResource: "thumbsdown", withExtension: "md"),
-    Bundle.main.url(forResource: "thumbsdown", withExtension: "html")
+    Bundle.main.url(forResource: "thumbsdown", withExtension: "html"),
+    Bundle.main.url(forResource: "greenthumb", withExtension: "thumb")
   ]
   .compactMap { $0 }
 

@@ -30,36 +30,24 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-#import "ThumbnailProvider.h"
+import UIKit
+import QuickLook
+import WebKit
 
-@implementation ThumbnailProvider
+class PreviewViewController: UIViewController, QLPreviewingController {
+  enum ThumbFilePreviewError: Error {
+    case unableToOpenFile(atURL: URL)
+  }
 
-- (void)provideThumbnailForFileRequest:(QLFileThumbnailRequest *)request completionHandler:(void (^)(QLThumbnailReply * _Nullable, NSError * _Nullable))handler {
-    
-    // There are three ways to provide a thumbnail through a QLThumbnailReply. Only one of them should be used.
-    
-    // First way: Draw the thumbnail into the current context, set up with UIKit's coordinate system.
-    handler([QLThumbnailReply replyWithContextSize:request.maximumSize currentContextDrawingBlock:^BOOL {
-        // Draw the thumbnail here.
-        
-        // Return YES if the thumbnail was successfully drawn inside this block.
-        return YES;
-    }], nil);
-    
-    /*
-    
-    // Second way: Draw the thumbnail into a context passed to your block, set up with Core Graphics's coordinate system.
-    handler([QLThumbnailReply replyWithContextSize:request.maximumSize drawingBlock:^BOOL(CGContextRef  _Nonnull context) {
-        // Draw the thumbnail here.
-     
-        // Return YES if the thumbnail was successfully drawn inside this block.
-        return YES;
-    }], nil);
-     
-    // Third way: Set an image file URL.
-    handler([QLThumbnailReply replyWithImageFileURL:[NSBundle.mainBundle URLForResource:@"fileThumbnail" withExtension:@"jpg"]], nil);
-    
-    */
+  @IBOutlet weak var webView: WKWebView!
+
+  func preparePreviewOfFile(at url: URL, completionHandler handler: @escaping (Error?) -> Void) {
+    guard let thumb = ThumbFile.init(from: url) else {
+      handler(ThumbFilePreviewError.unableToOpenFile(atURL: url))
+      return
+    }
+
+    webView.loadHTMLString(thumb.asHtml, baseURL: nil)
+    handler(nil)
+  }
 }
-
-@end

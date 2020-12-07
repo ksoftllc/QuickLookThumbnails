@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>ThumbPreview</string>
+	<string>ThumbFilePreview</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -26,7 +26,7 @@
 		<dict>
 			<key>QLSupportedContentTypes</key>
 			<array>
-				<string></string>
+				<string>com.raywenderlich.RazeThumb.ThumbFile</string>
 			</array>
 			<key>QLSupportsSearchableItems</key>
 			<false/>
