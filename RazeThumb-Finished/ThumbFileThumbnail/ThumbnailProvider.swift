@@ -40,6 +40,8 @@ class ThumbnailProvider: QLThumbnailProvider {
     case unableToCreateThumbnail(error: Error?)
   }
 
+  let webViewLoadingSemaphore = DispatchSemaphore(value: 1)
+
   override func provideThumbnail(for request: QLFileThumbnailRequest, _ handler: @escaping (QLThumbnailReply?, Error?) -> Void) {
     let thumbFileURL = request.fileURL
     guard let thumbFile = ThumbFile(from: thumbFileURL) else {
@@ -51,22 +53,21 @@ class ThumbnailProvider: QLThumbnailProvider {
     let scale = request.scale
     let frame = CGRect(origin: .zero, size: maximumSize)
 
+    self.webViewLoadingSemaphore.wait()
+    var thumbFileView: WKWebView?
     DispatchQueue.main.async {
-      let thumbFileView = WKWebView(frame: frame)
-      thumbFileView.loadHTMLString(thumbFile.asHtml, baseURL: nil)
-      thumbFileView.pageZoom = maximumSize.height / 1000.0
-      thumbFileView.layoutIfNeeded()
+      thumbFileView = WKWebView(frame: frame)
+      thumbFileView?.navigationDelegate = self
+      thumbFileView?.pageZoom = scale
+      thumbFileView?.layoutIfNeeded()
+      thumbFileView?.loadHTMLString(thumbFile.asHtml, baseURL: nil)
+    }
 
-//      if let snapshot = thumbFileView.snapshotView(afterScreenUpdates: true) {
-//        let reply = QLThumbnailReply(contextSize: maximumSize) {
-//          snapshot.draw(frame)
-//          return true
-//        }
-//        handler(reply, nil)
-//      } else {
-//        handler(nil, ThumbFileThumbnailError.unableToCreateThumbnail(error: nil))
-//      }
-      thumbFileView.takeSnapshot(with: nil) { snapshot, error in
+    self.webViewLoadingSemaphore.wait()
+
+    DispatchQueue.main.async {
+      self.webViewLoadingSemaphore.signal()
+      thumbFileView?.takeSnapshot(with: nil) { snapshot, error in
         guard var snapshot = snapshot else {
           handler(nil, ThumbFileThumbnailError.unableToCreateThumbnail(error: error))
           return
@@ -84,5 +85,11 @@ class ThumbnailProvider: QLThumbnailProvider {
         handler(reply, nil)
       }
     }
+  }
+}
+
+extension ThumbnailProvider: WKNavigationDelegate {
+  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation) {
+    webViewLoadingSemaphore.signal()
   }
 }
