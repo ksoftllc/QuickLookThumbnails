@@ -48,6 +48,7 @@ class PreviewViewController: UIViewController, QLPreviewingController {
     }
 
     webView.loadHTMLString(thumb.asHtml, baseURL: nil)
+    webView.pageZoom = 3.5
     handler(nil)
   }
 }
