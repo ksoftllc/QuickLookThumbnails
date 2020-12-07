@@ -57,15 +57,22 @@ class ThumbnailProvider: QLThumbnailProvider {
       thumbFileView.pageZoom = maximumSize.height / 1000.0
       thumbFileView.layoutIfNeeded()
 
+//      if let snapshot = thumbFileView.snapshotView(afterScreenUpdates: true) {
+//        let reply = QLThumbnailReply(contextSize: maximumSize) {
+//          snapshot.draw(frame)
+//          return true
+//        }
+//        handler(reply, nil)
+//      } else {
+//        handler(nil, ThumbFileThumbnailError.unableToCreateThumbnail(error: nil))
+//      }
       thumbFileView.takeSnapshot(with: nil) { snapshot, error in
         guard var snapshot = snapshot else {
           handler(nil, ThumbFileThumbnailError.unableToCreateThumbnail(error: error))
           return
         }
 
-        if snapshot.scale != scale,
-
-           let cgImage = snapshot.cgImage {
+        if snapshot.scale != scale, let cgImage = snapshot.cgImage {
           snapshot = UIImage(cgImage: cgImage, scale: scale, orientation: .up)
         }
 

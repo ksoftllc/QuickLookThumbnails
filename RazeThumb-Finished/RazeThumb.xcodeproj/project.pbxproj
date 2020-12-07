@@ -11,6 +11,7 @@
 		18D775C522AD944300AE281E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D775C422AD944300AE281E /* ContentView.swift */; };
 		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
 		18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D775DA22AD963800AE281E /* LaunchScreen.storyboard */; };
+		38225E69257EC27600BD1E80 /* zombie-thumbsup.icns in Resources */ = {isa = PBXBuildFile; fileRef = 38225E61257EC26B00BD1E80 /* zombie-thumbsup.icns */; };
 		384AEA3B2575D5070062310B /* DocumentThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384AEA3A2575D5070062310B /* DocumentThumbnailView.swift */; };
 		386632842579C8BA00C07B7B /* zombiethumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 386632832579C8BA00C07B7B /* zombiethumb.jpg */; };
 		386632872579CD7500C07B7B /* QuickLookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386632862579CD7500C07B7B /* QuickLookView.swift */; };
@@ -74,6 +75,7 @@
 		18D775C622AD944400AE281E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18D775CE22AD944400AE281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D775DE22AD96B400AE281E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		38225E61257EC26B00BD1E80 /* zombie-thumbsup.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "zombie-thumbsup.icns"; sourceTree = "<group>"; };
 		384AEA3A2575D5070062310B /* DocumentThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentThumbnailView.swift; sourceTree = "<group>"; };
 		386632832579C8BA00C07B7B /* zombiethumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zombiethumb.jpg; sourceTree = "<group>"; };
 		386632862579CD7500C07B7B /* QuickLookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookView.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				386D8975257863D400D3053B /* thumbsdown.md */,
 				3867C33E257D765100242239 /* greenthumb.thumb */,
 				386D897D2578908F00D3053B /* thumbsdown.html */,
+				38225E61257EC26B00BD1E80 /* zombie-thumbsup.icns */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				38EAC5B92576CBB10097077C /* humanthumb.pdf in Resources */,
 				18D775C722AD944400AE281E /* Assets.xcassets in Resources */,
 				386D8976257863D400D3053B /* thumbsdown.md in Resources */,
+				38225E69257EC27600BD1E80 /* zombie-thumbsup.icns in Resources */,
 				386632842579C8BA00C07B7B /* zombiethumb.jpg in Resources */,
 				3867C33F257D765100242239 /* greenthumb.thumb in Resources */,
 			);
@@ -574,6 +578,7 @@
 				DEVELOPMENT_TEAM = 9YGD2MC2Z6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "RazeThumb/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -595,6 +600,7 @@
 				DEVELOPMENT_TEAM = 9YGD2MC2Z6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "RazeThumb/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -612,7 +618,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9YGD2MC2Z6;
 				INFOPLIST_FILE = ThumbFilePreview/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -632,7 +638,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9YGD2MC2Z6;
 				INFOPLIST_FILE = ThumbFilePreview/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -652,7 +658,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9YGD2MC2Z6;
 				INFOPLIST_FILE = ThumbFileThumbnail/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -672,7 +678,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9YGD2MC2Z6;
 				INFOPLIST_FILE = ThumbFileThumbnail/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
