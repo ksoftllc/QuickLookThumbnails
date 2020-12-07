@@ -15,6 +15,15 @@
 		386632842579C8BA00C07B7B /* zombiethumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 386632832579C8BA00C07B7B /* zombiethumb.jpg */; };
 		386632872579CD7500C07B7B /* QuickLookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386632862579CD7500C07B7B /* QuickLookView.swift */; };
 		386632892579D45C00C07B7B /* Images License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 386D897825788B5500D3053B /* Images License.txt */; };
+		3867C317257D75DE00242239 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3867C316257D75DE00242239 /* QuickLook.framework */; };
+		3867C31B257D75DE00242239 /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3867C31A257D75DE00242239 /* PreviewViewController.m */; };
+		3867C31E257D75DE00242239 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3867C31C257D75DE00242239 /* MainInterface.storyboard */; };
+		3867C323257D75DF00242239 /* ThumbPreview.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3867C314257D75DE00242239 /* ThumbPreview.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3867C32F257D760700242239 /* QuickLookThumbnailing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3867C32E257D760700242239 /* QuickLookThumbnailing.framework */; };
+		3867C333257D760700242239 /* ThumbnailProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3867C332257D760700242239 /* ThumbnailProvider.m */; };
+		3867C337257D760700242239 /* ThumbThumbnail.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3867C32D257D760700242239 /* ThumbThumbnail.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3867C33F257D765100242239 /* greenthumb.thumb in Resources */ = {isa = PBXBuildFile; fileRef = 3867C33E257D765100242239 /* greenthumb.thumb */; };
+		3867C344257D77AD00242239 /* ThumbFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3867C343257D77AD00242239 /* ThumbFile.swift */; };
 		386D8976257863D400D3053B /* thumbsdown.md in Resources */ = {isa = PBXBuildFile; fileRef = 386D8975257863D400D3053B /* thumbsdown.md */; };
 		386D897E2578908F00D3053B /* thumbsdown.html in Resources */ = {isa = PBXBuildFile; fileRef = 386D897D2578908F00D3053B /* thumbsdown.html */; };
 		386D89812579346800D3053B /* DocumentPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386D89802579346800D3053B /* DocumentPreviewView.swift */; };
@@ -23,6 +32,38 @@
 		38EB106125744349002696ED /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EB106025744349002696ED /* Document.swift */; };
 		38EB1064257465DA002696ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EB1063257465DA002696ED /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3867C320257D75DE00242239 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18D775B522AD944300AE281E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3867C313257D75DE00242239;
+			remoteInfo = ThumbPreview;
+		};
+		3867C335257D760700242239 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18D775B522AD944300AE281E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3867C32C257D760700242239;
+			remoteInfo = ThumbThumbnail;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3867C322257D75DE00242239 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3867C337257D760700242239 /* ThumbThumbnail.appex in Embed App Extensions */,
+				3867C323257D75DF00242239 /* ThumbPreview.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1839F4AF25190F2A00BB00F1 /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
@@ -34,6 +75,19 @@
 		384AEA3A2575D5070062310B /* DocumentThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentThumbnailView.swift; sourceTree = "<group>"; };
 		386632832579C8BA00C07B7B /* zombiethumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zombiethumb.jpg; sourceTree = "<group>"; };
 		386632862579CD7500C07B7B /* QuickLookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookView.swift; sourceTree = "<group>"; };
+		3867C314257D75DE00242239 /* ThumbPreview.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ThumbPreview.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3867C316257D75DE00242239 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		3867C319257D75DE00242239 /* PreviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
+		3867C31A257D75DE00242239 /* PreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
+		3867C31D257D75DE00242239 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		3867C31F257D75DE00242239 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3867C32D257D760700242239 /* ThumbThumbnail.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ThumbThumbnail.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3867C32E257D760700242239 /* QuickLookThumbnailing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLookThumbnailing.framework; path = System/Library/Frameworks/QuickLookThumbnailing.framework; sourceTree = SDKROOT; };
+		3867C331257D760700242239 /* ThumbnailProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThumbnailProvider.h; sourceTree = "<group>"; };
+		3867C332257D760700242239 /* ThumbnailProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThumbnailProvider.m; sourceTree = "<group>"; };
+		3867C334257D760700242239 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3867C33E257D765100242239 /* greenthumb.thumb */ = {isa = PBXFileReference; lastKnownFileType = text; path = greenthumb.thumb; sourceTree = "<group>"; };
+		3867C343257D77AD00242239 /* ThumbFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbFile.swift; sourceTree = "<group>"; };
 		386D8975257863D400D3053B /* thumbsdown.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = thumbsdown.md; sourceTree = "<group>"; };
 		386D897825788B5500D3053B /* Images License.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Images License.txt"; sourceTree = "<group>"; };
 		386D897D2578908F00D3053B /* thumbsdown.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = thumbsdown.html; sourceTree = "<group>"; };
@@ -52,6 +106,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3867C311257D75DE00242239 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3867C317257D75DE00242239 /* QuickLook.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3867C32A257D760700242239 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3867C32F257D760700242239 /* QuickLookThumbnailing.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -59,6 +129,9 @@
 			isa = PBXGroup;
 			children = (
 				18D775BF22AD944300AE281E /* RazeThumb */,
+				3867C318257D75DE00242239 /* ThumbPreview */,
+				3867C330257D760700242239 /* ThumbThumbnail */,
+				3867C315257D75DE00242239 /* Frameworks */,
 				18D775BE22AD944300AE281E /* Products */,
 			);
 			indentWidth = 2;
@@ -69,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				18D775BD22AD944300AE281E /* RazeThumb.app */,
+				3867C314257D75DE00242239 /* ThumbPreview.appex */,
+				3867C32D257D760700242239 /* ThumbThumbnail.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,6 +158,36 @@
 			path = RazeThumb;
 			sourceTree = "<group>";
 		};
+		3867C315257D75DE00242239 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3867C316257D75DE00242239 /* QuickLook.framework */,
+				3867C32E257D760700242239 /* QuickLookThumbnailing.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3867C318257D75DE00242239 /* ThumbPreview */ = {
+			isa = PBXGroup;
+			children = (
+				3867C319257D75DE00242239 /* PreviewViewController.h */,
+				3867C31A257D75DE00242239 /* PreviewViewController.m */,
+				3867C31C257D75DE00242239 /* MainInterface.storyboard */,
+				3867C31F257D75DE00242239 /* Info.plist */,
+			);
+			path = ThumbPreview;
+			sourceTree = "<group>";
+		};
+		3867C330257D760700242239 /* ThumbThumbnail */ = {
+			isa = PBXGroup;
+			children = (
+				3867C331257D760700242239 /* ThumbnailProvider.h */,
+				3867C332257D760700242239 /* ThumbnailProvider.m */,
+				3867C334257D760700242239 /* Info.plist */,
+			);
+			path = ThumbThumbnail;
+			sourceTree = "<group>";
+		};
 		38EB105325741A14002696ED /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +195,7 @@
 				38EAC5B82576CBB10097077C /* humanthumb.pdf */,
 				38EAC5C12576D17D0097077C /* thumbsup.txt */,
 				386D8975257863D400D3053B /* thumbsdown.md */,
+				3867C33E257D765100242239 /* greenthumb.thumb */,
 				386D897D2578908F00D3053B /* thumbsdown.html */,
 				386D897825788B5500D3053B /* Images License.txt */,
 			);
@@ -106,6 +212,7 @@
 				386D89802579346800D3053B /* DocumentPreviewView.swift */,
 				384AEA3A2575D5070062310B /* DocumentThumbnailView.swift */,
 				386632862579CD7500C07B7B /* QuickLookView.swift */,
+				3867C343257D77AD00242239 /* ThumbFile.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -131,15 +238,52 @@
 				18D775B922AD944300AE281E /* Sources */,
 				18D775BA22AD944300AE281E /* Frameworks */,
 				18D775BB22AD944300AE281E /* Resources */,
+				3867C322257D75DE00242239 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3867C321257D75DE00242239 /* PBXTargetDependency */,
+				3867C336257D760700242239 /* PBXTargetDependency */,
 			);
 			name = RazeThumb;
 			productName = MyRWTutorial;
 			productReference = 18D775BD22AD944300AE281E /* RazeThumb.app */;
 			productType = "com.apple.product-type.application";
+		};
+		3867C313257D75DE00242239 /* ThumbPreview */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3867C326257D75DF00242239 /* Build configuration list for PBXNativeTarget "ThumbPreview" */;
+			buildPhases = (
+				3867C310257D75DE00242239 /* Sources */,
+				3867C311257D75DE00242239 /* Frameworks */,
+				3867C312257D75DE00242239 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ThumbPreview;
+			productName = ThumbPreview;
+			productReference = 3867C314257D75DE00242239 /* ThumbPreview.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		3867C32C257D760700242239 /* ThumbThumbnail */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3867C338257D760700242239 /* Build configuration list for PBXNativeTarget "ThumbThumbnail" */;
+			buildPhases = (
+				3867C329257D760700242239 /* Sources */,
+				3867C32A257D760700242239 /* Frameworks */,
+				3867C32B257D760700242239 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ThumbThumbnail;
+			productName = ThumbThumbnail;
+			productReference = 3867C32D257D760700242239 /* ThumbThumbnail.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -153,6 +297,12 @@
 				TargetAttributes = {
 					18D775BC22AD944300AE281E = {
 						CreatedOnToolsVersion = 11.0;
+					};
+					3867C313257D75DE00242239 = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					3867C32C257D760700242239 = {
+						CreatedOnToolsVersion = 12.2;
 					};
 				};
 			};
@@ -170,6 +320,8 @@
 			projectRoot = "";
 			targets = (
 				18D775BC22AD944300AE281E /* RazeThumb */,
+				3867C313257D75DE00242239 /* ThumbPreview */,
+				3867C32C257D760700242239 /* ThumbThumbnail */,
 			);
 		};
 /* End PBXProject section */
@@ -187,6 +339,22 @@
 				18D775C722AD944400AE281E /* Assets.xcassets in Resources */,
 				386D8976257863D400D3053B /* thumbsdown.md in Resources */,
 				386632842579C8BA00C07B7B /* zombiethumb.jpg in Resources */,
+				3867C33F257D765100242239 /* greenthumb.thumb in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3867C312257D75DE00242239 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3867C31E257D75DE00242239 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3867C32B257D760700242239 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +388,7 @@
 			files = (
 				38EB1064257465DA002696ED /* AppDelegate.swift in Sources */,
 				18D775C522AD944300AE281E /* ContentView.swift in Sources */,
+				3867C344257D77AD00242239 /* ThumbFile.swift in Sources */,
 				386D89812579346800D3053B /* DocumentPreviewView.swift in Sources */,
 				386632872579CD7500C07B7B /* QuickLookView.swift in Sources */,
 				384AEA3B2575D5070062310B /* DocumentThumbnailView.swift in Sources */,
@@ -228,7 +397,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3867C310257D75DE00242239 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3867C31B257D75DE00242239 /* PreviewViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3867C329257D760700242239 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3867C333257D760700242239 /* ThumbnailProvider.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3867C321257D75DE00242239 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3867C313257D75DE00242239 /* ThumbPreview */;
+			targetProxy = 3867C320257D75DE00242239 /* PBXContainerItemProxy */;
+		};
+		3867C336257D760700242239 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3867C32C257D760700242239 /* ThumbThumbnail */;
+			targetProxy = 3867C335257D760700242239 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		18D775DA22AD963800AE281E /* LaunchScreen.storyboard */ = {
@@ -237,6 +435,14 @@
 				18D775DE22AD96B400AE281E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		3867C31C257D75DE00242239 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3867C31D257D75DE00242239 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -398,6 +604,82 @@
 			};
 			name = Release;
 		};
+		3867C324257D75DF00242239 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9YGD2MC2Z6;
+				INFOPLIST_FILE = ThumbPreview/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.RazeThumb.ThumbPreview;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3867C325257D75DF00242239 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9YGD2MC2Z6;
+				INFOPLIST_FILE = ThumbPreview/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.RazeThumb.ThumbPreview;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3867C339257D760700242239 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9YGD2MC2Z6;
+				INFOPLIST_FILE = ThumbThumbnail/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.RazeThumb.ThumbThumbnail;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3867C33A257D760700242239 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9YGD2MC2Z6;
+				INFOPLIST_FILE = ThumbThumbnail/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.RazeThumb.ThumbThumbnail;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -415,6 +697,24 @@
 			buildConfigurations = (
 				18D775D222AD944400AE281E /* Debug */,
 				18D775D322AD944400AE281E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3867C326257D75DF00242239 /* Build configuration list for PBXNativeTarget "ThumbPreview" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3867C324257D75DF00242239 /* Debug */,
+				3867C325257D75DF00242239 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3867C338257D760700242239 /* Build configuration list for PBXNativeTarget "ThumbThumbnail" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3867C339257D760700242239 /* Debug */,
+				3867C33A257D760700242239 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
