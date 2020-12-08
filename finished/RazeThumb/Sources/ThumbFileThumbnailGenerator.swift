@@ -46,7 +46,7 @@ class ThumbFileThumbnailGenerator: NSObject {
       thumbFileView = self.loadThumbFileView(for: thumbFile, in: frame, scale: scale)
     }
 
-    //wait until loading completes
+    //wait until loading completes but not on main thread
     self.webViewLoadingSemaphore.wait()
 
     DispatchQueue.main.async {

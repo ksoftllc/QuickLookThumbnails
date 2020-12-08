@@ -57,8 +57,12 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "0"
+         BundleIdentifier = "com.raywenderlich.RazeThumb"
+         RemotePath = "/var/containers/Bundle/Application/5ED713AC-43EE-4E55-AA0B-A883C7D9FD08/RazeThumb.app">
+      </RemoteRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "18D775BC22AD944300AE281E"
@@ -66,7 +70,7 @@
             BlueprintName = "RazeThumb"
             ReferencedContainer = "container:RazeThumb.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
