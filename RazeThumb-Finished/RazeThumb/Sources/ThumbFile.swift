@@ -37,11 +37,14 @@ struct ThumbFile: Codable {
   let imageURL: URL
 
   init?(from url: URL) {
-      guard let data = FileManager.default.contents(atPath: url.path),
-            let thumb = try? JSONDecoder().decode(Self.self, from: data) else {
-          return nil
-      }
-      self = thumb
+    guard
+      let data = FileManager.default.contents(atPath: url.path),
+      let thumb = try? JSONDecoder().decode(Self.self, from: data)
+    else {
+      return nil
+    }
+
+    self = thumb
   }
 
   var asHtml: String {
@@ -56,3 +59,4 @@ struct ThumbFile: Codable {
       """
   }
 }
+
