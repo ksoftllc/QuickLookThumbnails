@@ -52,7 +52,7 @@ struct ThumbFile: Codable {
       """
         <html>
           <body>
-            <h2>\(title)</h2>
+            <h1>\(title)</h1>
             <img src="\(imageURL)" alt="image"/>
           </body>
         </html>
