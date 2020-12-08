@@ -30,41 +30,58 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import UIKit
-import QuickLookThumbnailing
+import Foundation
 import WebKit
 
-class ThumbnailProvider: QLThumbnailProvider {
-  enum ThumbFileThumbnailError: Error {
-    case unableToOpenFile(atURL: URL)
-    case unableToCreateThumbnail
-  }
+/// Helper class to generate a snapshot of a WKWebView containing the HTML that represents a ThumbFile
+class ThumbFileThumbnailGenerator: NSObject {
+  let webViewLoadingSemaphore = DispatchSemaphore(value: 1)
 
-  let thumbnailGenerator = ThumbFileThumbnailGenerator()
-  var handler: (QLThumbnailReply?, Error?) -> Void = { _, _ in }
+  func provideSnapshotImage(for thumbFile: ThumbFile, scale: CGFloat, frame: CGRect, completion: @escaping (UIImage?) -> Void) {
+    //set up to block until view completes loading
+    self.webViewLoadingSemaphore.wait()
 
-  override func provideThumbnail(for request: QLFileThumbnailRequest, _ handler: @escaping (QLThumbnailReply?, Error?) -> Void) {
-    let thumbFileURL = request.fileURL
-    guard let thumbFile = ThumbFile(from: thumbFileURL) else {
-      handler(nil, ThumbFileThumbnailError.unableToOpenFile(atURL: thumbFileURL))
-      return
+    var thumbFileView: WKWebView?
+    DispatchQueue.main.async {
+      thumbFileView = self.loadThumbFileView(for: thumbFile, in: frame, scale: scale)
     }
 
-    let maximumSize = request.maximumSize
-    let scale = request.scale
-    let frame = CGRect(origin: .zero, size: maximumSize)
-    self.handler = handler
+    //wait until loading completes
+    self.webViewLoadingSemaphore.wait()
 
-    thumbnailGenerator.provideSnapshotImage(for: thumbFile, scale: scale, frame: frame) { thumbnailImage in
-      if let thumbnailImage = thumbnailImage {
-        let reply = QLThumbnailReply(contextSize: maximumSize) {
-          thumbnailImage.draw(at: .zero)
-          return true
+    DispatchQueue.main.async {
+      //clear the first wait
+      self.webViewLoadingSemaphore.signal()
+
+      thumbFileView?.takeSnapshot(with: nil) { snapshot, _ in
+        guard var snapshot = snapshot else {
+          completion(nil)
+          return
         }
-        self.handler(reply, nil)
-      } else {
-        self.handler(nil, ThumbFileThumbnailError.unableToCreateThumbnail)
+
+        if snapshot.scale != scale, let cgImage = snapshot.cgImage {
+          snapshot = UIImage(cgImage: cgImage, scale: scale, orientation: .up)
+        }
+
+        completion(snapshot)
       }
     }
+  }
+
+  func loadThumbFileView(for thumbFile: ThumbFile, in frame: CGRect, scale: CGFloat) -> WKWebView {
+    let thumbFileView = WKWebView(frame: frame)
+    thumbFileView.navigationDelegate = self
+    thumbFileView.pageZoom = scale
+    thumbFileView.layoutIfNeeded()
+    thumbFileView.loadHTMLString(thumbFile.asHtml, baseURL: nil)
+    return thumbFileView
+  }
+}
+
+// MARK: - WKNavigationDelegate
+extension ThumbFileThumbnailGenerator: WKNavigationDelegate {
+  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation) {
+    //signal that loading is complete
+    webViewLoadingSemaphore.signal()
   }
 }
