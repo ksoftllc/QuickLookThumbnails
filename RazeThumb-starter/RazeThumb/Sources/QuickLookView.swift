@@ -33,6 +33,7 @@
 import SwiftUI
 import QuickLook
 
+/// SwiftUI wrapper for QLPreviewController
 struct QuickLookView: UIViewControllerRepresentable {
   var document: Document
 
