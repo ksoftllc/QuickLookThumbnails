@@ -34,7 +34,7 @@ import Foundation
 import WebKit
 
 /// Helper class to generate a snapshot of a WKWebView containing the HTML that represents a ThumbFile
-class ThumbFileThumbnailGenerator: NSObject {
+class ThumbFileSnapshotGenerator: NSObject {
   let webViewLoadingSemaphore = DispatchSemaphore(value: 1)
 
   func provideSnapshotImage(for thumbFile: ThumbFile, scale: CGFloat, frame: CGRect, completion: @escaping (UIImage?) -> Void) {
@@ -79,7 +79,7 @@ class ThumbFileThumbnailGenerator: NSObject {
 }
 
 // MARK: - WKNavigationDelegate
-extension ThumbFileThumbnailGenerator: WKNavigationDelegate {
+extension ThumbFileSnapshotGenerator: WKNavigationDelegate {
   func webView(_ webView: WKWebView, didFinish navigation: WKNavigation) {
     //signal that loading is complete
     webViewLoadingSemaphore.signal()
