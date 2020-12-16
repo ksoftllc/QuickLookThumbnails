@@ -13,6 +13,7 @@
 		18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D775DA22AD963800AE281E /* LaunchScreen.storyboard */; };
 		38378F39258A979C00DBB65B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 388273E4257DBC3600C438DC /* MainInterface.storyboard */; };
 		38378F3D258A9E2300DBB65B /* ThumbFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D78267258A877200AB0CCE /* ThumbFileViewController.swift */; };
+		38378F41258ABDE000DBB65B /* ThumbFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D78267258A877200AB0CCE /* ThumbFileViewController.swift */; };
 		384AEA3B2575D5070062310B /* DocumentThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384AEA3A2575D5070062310B /* DocumentThumbnailView.swift */; };
 		386632842579C8BA00C07B7B /* zombiethumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 386632832579C8BA00C07B7B /* zombiethumb.jpg */; };
 		386632872579CD7500C07B7B /* QuickLookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386632862579CD7500C07B7B /* QuickLookView.swift */; };
@@ -422,6 +423,7 @@
 				3882740A257DBF2D00C438DC /* ThumbFile.swift in Sources */,
 				388273F8257DBC5100C438DC /* ThumbnailProvider.swift in Sources */,
 				3898F78C257F1E5800B2EBF3 /* ThumbFileThumbnailGenerator.swift in Sources */,
+				38378F41258ABDE000DBB65B /* ThumbFileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
