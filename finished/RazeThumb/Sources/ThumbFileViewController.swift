@@ -40,7 +40,7 @@ class ThumbFileViewController: UIViewController {
   func loadThumbFileView() {
     guard let thumbFile = thumbFile else { return }
     addTitleToView(thumbFile.title)
-    addImageToView(thumbFile.uiImage)
+    addThumbImageToView(thumbFile.uiImage)
   }
 
   func addTitleToView(_ title: String) {
@@ -58,7 +58,7 @@ class ThumbFileViewController: UIViewController {
     ])
   }
 
-  func addImageToView(_ image: UIImage?) {
+  func addThumbImageToView(_ image: UIImage?) {
     imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
     guard let imageView = imageView else { return }
     guard let titleLabel = titleLabel else { return }
