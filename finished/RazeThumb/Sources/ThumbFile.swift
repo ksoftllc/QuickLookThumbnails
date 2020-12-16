@@ -31,14 +31,15 @@
 /// THE SOFTWARE.
 
 import Foundation
+import UIKit.UIImage
 
 struct ThumbFile: Codable {
   let title: String
-  let imageURL: URL
+  let imageBase64: String
 
-  init?(from url: URL) {
+  init?(from fileURL: URL) {
     guard
-      let data = FileManager.default.contents(atPath: url.path),
+      let data = FileManager.default.contents(atPath: fileURL.path),
       let thumb = try? JSONDecoder().decode(Self.self, from: data)
     else {
       return nil
@@ -47,15 +48,8 @@ struct ThumbFile: Codable {
     self = thumb
   }
 
-  var asHtml: String {
-    return
-      """
-        <html>
-          <body>
-            <h1>\(title)</h1>
-            <img src="\(imageURL)" alt="image"/>
-          </body>
-        </html>
-      """
+  var uiImage: UIImage? {
+    return Data(base64Encoded: imageBase64)
+      .flatMap { UIImage(data: $0) }
   }
 }

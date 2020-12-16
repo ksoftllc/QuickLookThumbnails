@@ -34,12 +34,10 @@ import UIKit
 import QuickLook
 import WebKit
 
-class PreviewViewController: UIViewController, QLPreviewingController {
+class PreviewViewController: ThumbFileViewController, QLPreviewingController {
   enum ThumbFilePreviewError: Error {
     case unableToOpenFile(atURL: URL)
   }
-
-  @IBOutlet weak var webView: WKWebView!
 
   func preparePreviewOfFile(at url: URL, completionHandler handler: @escaping (Error?) -> Void) {
     guard let thumb = ThumbFile.init(from: url) else {
@@ -47,8 +45,8 @@ class PreviewViewController: UIViewController, QLPreviewingController {
       return
     }
 
-    webView.loadHTMLString(thumb.asHtml, baseURL: nil)
-    webView.pageZoom = 2.0
+    thumbFile = thumb
+    loadThumbFileView()
     handler(nil)
   }
 }

@@ -40,7 +40,7 @@ struct ContentView: View {
     NavigationView {
       ScrollView(.vertical) {
         LazyVGrid(
-          columns: [GridItem(.adaptive(minimum: 200, maximum: 200))],
+          columns: [GridItem(.adaptive(minimum: 150, maximum: 150))],
           spacing: 25
         ) {
           ForEach(documents, id: \.self) { document in

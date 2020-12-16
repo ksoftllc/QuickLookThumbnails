@@ -30,58 +30,44 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
-import WebKit
+import UIKit
 
-/// Helper class to generate a snapshot of a WKWebView containing the HTML that represents a ThumbFile
-class ThumbFileThumbnailGenerator: NSObject {
-  let webViewLoadingSemaphore = DispatchSemaphore(value: 1)
+class ThumbFileViewController: UIViewController {
+  var titleLabel: UILabel?
+  var imageView: UIImageView?
+  var thumbFile: ThumbFile?
 
-  func provideSnapshotImage(for thumbFile: ThumbFile, scale: CGFloat, frame: CGRect, completion: @escaping (UIImage?) -> Void) {
-//    //set up to block until view completes loading
-//    self.webViewLoadingSemaphore.wait()
-//
-//    var thumbFileView: WKWebView?
-//    DispatchQueue.main.async {
-//      thumbFileView = self.loadThumbFileView(for: thumbFile, in: frame, scale: scale)
-//    }
-//
-//    //wait until loading completes but not on main thread
-//    self.webViewLoadingSemaphore.wait()
-//
-//    DispatchQueue.main.async {
-//      //clear the first wait
-//      self.webViewLoadingSemaphore.signal()
-//
-//      thumbFileView?.takeSnapshot(with: nil) { snapshot, _ in
-//        guard var snapshot = snapshot else {
-//          completion(nil)
-//          return
-//        }
-//
-//        if snapshot.scale != scale, let cgImage = snapshot.cgImage {
-//          snapshot = UIImage(cgImage: cgImage, scale: scale, orientation: .up)
-//        }
-//
-//        completion(snapshot)
-//      }
-//    }
+  func loadThumbFileView() {
+    guard let thumbFile = thumbFile else { return }
+    addTitleToView(thumbFile.title)
+    addImageToView(thumbFile.uiImage)
   }
 
-//  func loadThumbFileView(for thumbFile: ThumbFile, in frame: CGRect, scale: CGFloat) -> WKWebView {
-//    let thumbFileView = WKWebView(frame: frame)
-//    thumbFileView.navigationDelegate = self
-//    thumbFileView.pageZoom = scale
-//    thumbFileView.layoutIfNeeded()
-//    thumbFileView.loadHTMLString(thumbFile.asHtml, baseURL: nil)
-//    return thumbFileView
-//  }
-}
+  func addTitleToView(_ title: String) {
+    titleLabel = UILabel()
+    guard let titleLabel = self.titleLabel else { return }
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    titleLabel.textAlignment = .center
+    titleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
+    titleLabel.text = title
+    view.addSubview(titleLabel)
+    NSLayoutConstraint.activate([
+      titleLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 30),
+      titleLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+      titleLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor)
+    ])
+  }
 
-// MARK: - WKNavigationDelegate
-extension ThumbFileThumbnailGenerator: WKNavigationDelegate {
-//  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation) {
-//    //signal that loading is complete
-//    webViewLoadingSemaphore.signal()
-//  }
+  func addImageToView(_ image: UIImage?) {
+    imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+    guard let imageView = imageView else { return }
+    guard let titleLabel = titleLabel else { return }
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    imageView.image = image
+    view.addSubview(imageView)
+    NSLayoutConstraint.activate([
+      imageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 50.0),
+      imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+    ])
+  }
 }
