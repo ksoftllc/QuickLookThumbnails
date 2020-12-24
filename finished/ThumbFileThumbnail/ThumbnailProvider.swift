@@ -65,33 +65,6 @@ class ThumbnailProvider: QLThumbnailProvider {
       }
       self.handler(reply, nil)
       print("reply sent")
-
-      //      if let snapshot = thumbFileViewController.view.snapshotView(afterScreenUpdates: true) {
-      //        let reply = QLThumbnailReply(contextSize: request.maximumSize) {
-      //          snapshot.draw(CGRect(origin: .zero, size: request.maximumSize))
-      //          return true
-      //        }
-      //        self.handler(reply, nil)
-      //      } else {
-      //        self.handler(nil, ThumbFileThumbnailError.unableToCreateThumbnail)
-      //      }
     }
-    //
-    //    let maximumSize = request.maximumSize
-    //    let scale = request.scale
-    //    let frame = CGRect(origin: .zero, size: maximumSize)
-    //    self.handler = handler
-    //
-    //    thumbnailGenerator.provideSnapshotImage(for: thumbFile, scale: scale, frame: frame) { thumbnailImage in
-    //      if let thumbnailImage = thumbnailImage {
-    //        let reply = QLThumbnailReply(contextSize: maximumSize) {
-    //          thumbnailImage.draw(at: .zero)
-    //          return true
-    //        }
-    //        self.handler(reply, nil)
-    //      } else {
-    //        self.handler(nil, ThumbFileThumbnailError.unableToCreateThumbnail)
-    //      }
-    //    }
   }
 }
