@@ -35,10 +35,13 @@ import UIKit
 class ThumbFileViewController: UIViewController {
   var titleLabel: UILabel?
   var imageView: UIImageView?
-  var thumbFile: ThumbFile?
 
-  func loadThumbFileView() {
-    guard let thumbFile = thumbFile else { return }
+  override func loadView() {
+    view = UIView()
+    view.backgroundColor = .white
+  }
+
+  func loadThumbFileView(for thumbFile: ThumbFile) {
     addTitleToView(thumbFile.title)
     addThumbImageToView(thumbFile.uiImage)
   }

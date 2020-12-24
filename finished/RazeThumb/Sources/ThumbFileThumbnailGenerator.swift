@@ -79,9 +79,9 @@ class ThumbFileThumbnailGenerator: NSObject {
 }
 
 // MARK: - WKNavigationDelegate
-extension ThumbFileThumbnailGenerator: WKNavigationDelegate {
+//extension ThumbFileThumbnailGenerator: WKNavigationDelegate {
 //  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation) {
 //    //signal that loading is complete
 //    webViewLoadingSemaphore.signal()
 //  }
-}
+//}

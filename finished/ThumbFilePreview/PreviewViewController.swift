@@ -40,13 +40,12 @@ class PreviewViewController: ThumbFileViewController, QLPreviewingController {
   }
 
   func preparePreviewOfFile(at url: URL, completionHandler handler: @escaping (Error?) -> Void) {
-    guard let thumb = ThumbFile.init(from: url) else {
+    guard let thumbFile = ThumbFile.init(from: url) else {
       handler(ThumbFilePreviewError.unableToOpenFile(atURL: url))
       return
     }
 
-    thumbFile = thumb
-    loadThumbFileView()
+    loadThumbFileView(for: thumbFile)
     handler(nil)
   }
 }

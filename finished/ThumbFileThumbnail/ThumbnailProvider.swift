@@ -40,7 +40,7 @@ class ThumbnailProvider: QLThumbnailProvider {
     case unableToCreateThumbnail
   }
 
-  let thumbnailGenerator = ThumbFileThumbnailGenerator()
+  //  let thumbnailGenerator = ThumbFileThumbnailGenerator()
   var handler: (QLThumbnailReply?, Error?) -> Void = { _, _ in }
 
   override func provideThumbnail(for request: QLFileThumbnailRequest, _ handler: @escaping (QLThumbnailReply?, Error?) -> Void) {
@@ -50,21 +50,48 @@ class ThumbnailProvider: QLThumbnailProvider {
       return
     }
 
-    let maximumSize = request.maximumSize
-    let scale = request.scale
-    let frame = CGRect(origin: .zero, size: maximumSize)
-    self.handler = handler
-
-    thumbnailGenerator.provideSnapshotImage(for: thumbFile, scale: scale, frame: frame) { thumbnailImage in
-      if let thumbnailImage = thumbnailImage {
-        let reply = QLThumbnailReply(contextSize: maximumSize) {
-          thumbnailImage.draw(at: .zero)
-          return true
-        }
-        self.handler(reply, nil)
-      } else {
-        self.handler(nil, ThumbFileThumbnailError.unableToCreateThumbnail)
+    print("provide thumbnail for \(thumbFileURL)")
+    DispatchQueue.main.async {
+      print("reply on main thread \(Thread.isMainThread)")
+      let thumbFileViewController = ThumbFileViewController()
+      thumbFileViewController.view.frame = CGRect(origin: .zero, size: request.maximumSize)
+      thumbFileViewController.loadThumbFileView(for: thumbFile)
+      thumbFileViewController.view.layoutIfNeeded()
+      thumbFileViewController.view.contentScaleFactor /= request.scale
+      let reply = QLThumbnailReply(contextSize: request.maximumSize) { () -> Bool in
+        print("current context drawing closure")
+        thumbFileViewController.view.draw(thumbFileViewController.view.bounds)
+        return true
       }
+      self.handler(reply, nil)
+      print("reply sent")
+
+      //      if let snapshot = thumbFileViewController.view.snapshotView(afterScreenUpdates: true) {
+      //        let reply = QLThumbnailReply(contextSize: request.maximumSize) {
+      //          snapshot.draw(CGRect(origin: .zero, size: request.maximumSize))
+      //          return true
+      //        }
+      //        self.handler(reply, nil)
+      //      } else {
+      //        self.handler(nil, ThumbFileThumbnailError.unableToCreateThumbnail)
+      //      }
     }
+    //
+    //    let maximumSize = request.maximumSize
+    //    let scale = request.scale
+    //    let frame = CGRect(origin: .zero, size: maximumSize)
+    //    self.handler = handler
+    //
+    //    thumbnailGenerator.provideSnapshotImage(for: thumbFile, scale: scale, frame: frame) { thumbnailImage in
+    //      if let thumbnailImage = thumbnailImage {
+    //        let reply = QLThumbnailReply(contextSize: maximumSize) {
+    //          thumbnailImage.draw(at: .zero)
+    //          return true
+    //        }
+    //        self.handler(reply, nil)
+    //      } else {
+    //        self.handler(nil, ThumbFileThumbnailError.unableToCreateThumbnail)
+    //      }
+    //    }
   }
 }
