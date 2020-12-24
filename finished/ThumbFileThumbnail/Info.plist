@@ -28,8 +28,6 @@
 			<array>
 				<string>com.raywenderlich.RazeThumb.ThumbFile</string>
 			</array>
-			<key>QLThumbnailMinimumDimension</key>
-			<integer>0</integer>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.quicklook.thumbnail</string>
