@@ -34,14 +34,14 @@ import SwiftUI
 import QuickLook
 
 /// SwiftUI wrapper for QLPreviewController
-struct QuickLookView: UIViewControllerRepresentable {
+struct QLPreviewView: UIViewControllerRepresentable {
   var document: Document
 
   func makeCoordinator() -> Coordinator {
     Coordinator(self)
   }
 
-  func updateUIViewController(_ viewController: QLPreviewController, context: UIViewControllerRepresentableContext<QuickLookView>) {
+  func updateUIViewController(_ viewController: QLPreviewController, context: UIViewControllerRepresentableContext<QLPreviewView>) {
     viewController.reloadData()
   }
 
@@ -54,9 +54,9 @@ struct QuickLookView: UIViewControllerRepresentable {
   }
 
   class Coordinator: NSObject, QLPreviewControllerDataSource {
-    var parent: QuickLookView
+    var parent: QLPreviewView
 
-    init(_ qlPreviewController: QuickLookView) {
+    init(_ qlPreviewController: QLPreviewView) {
       self.parent = qlPreviewController
       super.init()
     }

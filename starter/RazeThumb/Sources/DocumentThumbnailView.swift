@@ -34,12 +34,13 @@ import SwiftUI
 
 struct DocumentThumbnailView: View {
   let document: Document
+  @State var thumbnail = Image(systemName: "doc")
 
   var body: some View {
-    GroupBox(label: Text(verbatim: document.name)) {
-      Image(systemName: "doc")
+    GroupBox(label: Text(verbatim: document.name).font(.system(size: 12))) {
+      thumbnail
         .font(.system(size: 120))
-        .frame(minWidth: 150, maxWidth: 150, minHeight: 150, maxHeight: 150, alignment: .center)
+        .frame(width: 150, height: 150, alignment: .center)
         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         .padding()
     }

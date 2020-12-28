@@ -16,7 +16,7 @@
 		38378F41258ABDE000DBB65B /* ThumbFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D78267258A877200AB0CCE /* ThumbFileViewController.swift */; };
 		384AEA3B2575D5070062310B /* DocumentThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384AEA3A2575D5070062310B /* DocumentThumbnailView.swift */; };
 		386632842579C8BA00C07B7B /* zombiethumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 386632832579C8BA00C07B7B /* zombiethumb.jpg */; };
-		386632872579CD7500C07B7B /* QuickLookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386632862579CD7500C07B7B /* QuickLookView.swift */; };
+		386632872579CD7500C07B7B /* QLPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386632862579CD7500C07B7B /* QLPreviewView.swift */; };
 		386632892579D45C00C07B7B /* Images License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 386D897825788B5500D3053B /* Images License.txt */; };
 		3867C33F257D765100242239 /* greenthumb.thumb in Resources */ = {isa = PBXBuildFile; fileRef = 3867C33E257D765100242239 /* greenthumb.thumb */; };
 		3867C344257D77AD00242239 /* ThumbFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3867C343257D77AD00242239 /* ThumbFile.swift */; };
@@ -79,7 +79,7 @@
 		18D775DE22AD96B400AE281E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		384AEA3A2575D5070062310B /* DocumentThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentThumbnailView.swift; sourceTree = "<group>"; };
 		386632832579C8BA00C07B7B /* zombiethumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zombiethumb.jpg; sourceTree = "<group>"; };
-		386632862579CD7500C07B7B /* QuickLookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookView.swift; sourceTree = "<group>"; };
+		386632862579CD7500C07B7B /* QLPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QLPreviewView.swift; sourceTree = "<group>"; };
 		3867C316257D75DE00242239 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		3867C32E257D760700242239 /* QuickLookThumbnailing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLookThumbnailing.framework; path = System/Library/Frameworks/QuickLookThumbnailing.framework; sourceTree = SDKROOT; };
 		3867C33E257D765100242239 /* greenthumb.thumb */ = {isa = PBXFileReference; lastKnownFileType = text; path = greenthumb.thumb; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 				38EB106025744349002696ED /* Document.swift */,
 				386D89802579346800D3053B /* DocumentPreviewView.swift */,
 				384AEA3A2575D5070062310B /* DocumentThumbnailView.swift */,
-				386632862579CD7500C07B7B /* QuickLookView.swift */,
+				386632862579CD7500C07B7B /* QLPreviewView.swift */,
 				3867C343257D77AD00242239 /* ThumbFile.swift */,
 				38D78267258A877200AB0CCE /* ThumbFileViewController.swift */,
 			);
@@ -394,7 +394,7 @@
 				3867C344257D77AD00242239 /* ThumbFile.swift in Sources */,
 				38D78268258A877200AB0CCE /* ThumbFileViewController.swift in Sources */,
 				386D89812579346800D3053B /* DocumentPreviewView.swift in Sources */,
-				386632872579CD7500C07B7B /* QuickLookView.swift in Sources */,
+				386632872579CD7500C07B7B /* QLPreviewView.swift in Sources */,
 				384AEA3B2575D5070062310B /* DocumentThumbnailView.swift in Sources */,
 				1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */,
 				38EB106125744349002696ED /* Document.swift in Sources */,

@@ -94,26 +94,3 @@ extension Document {
     }
   }
 }
-
-// MARK: - QLThumbnailGenerator
-extension Document {
-  func generateThumbnail(width: Int, height: Int, completion: @escaping (UIImage) -> Void) {
-    let size = CGSize(width: width, height: height)
-    let scale = UIScreen.main.scale
-
-    let request = QLThumbnailGenerator.Request(
-      fileAt: url,
-      size: size,
-      scale: scale,
-      representationTypes: .all)
-
-    let generator = QLThumbnailGenerator.shared
-    generator.generateRepresentations(for: request) { thumbnail, _, error in
-      if let thumbnail = thumbnail {
-        completion(thumbnail.uiImage)
-      } else if let error = error {
-        print("thumbnail error for \(name) - \(error)")
-      }
-    }
-  }
-}
