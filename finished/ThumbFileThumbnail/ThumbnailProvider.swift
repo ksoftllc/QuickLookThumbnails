@@ -40,9 +40,6 @@ class ThumbnailProvider: QLThumbnailProvider {
     case unableToCreateThumbnail
   }
 
-  //  let thumbnailGenerator = ThumbFileThumbnailGenerator()
-  var handler: (QLThumbnailReply?, Error?) -> Void = { _, _ in }
-
   override func provideThumbnail(for request: QLFileThumbnailRequest, _ handler: @escaping (QLThumbnailReply?, Error?) -> Void) {
     let thumbFileURL = request.fileURL
     guard let thumbFile = ThumbFile(from: thumbFileURL) else {
@@ -50,21 +47,17 @@ class ThumbnailProvider: QLThumbnailProvider {
       return
     }
 
-    print("provide thumbnail for \(thumbFileURL)")
     DispatchQueue.main.async {
-      print("reply on main thread \(Thread.isMainThread)")
-      let thumbFileViewController = ThumbFileViewController()
-      thumbFileViewController.view.frame = CGRect(origin: .zero, size: request.maximumSize)
-      thumbFileViewController.loadThumbFileView(for: thumbFile)
-      thumbFileViewController.view.layoutIfNeeded()
-      thumbFileViewController.view.contentScaleFactor /= request.scale
+      guard let image = ThumbFileViewController.generateThumbnail(for: thumbFile, size: request.maximumSize) else {
+        handler(nil, ThumbFileThumbnailError.unableToCreateThumbnail)
+        return
+      }
+
       let reply = QLThumbnailReply(contextSize: request.maximumSize) { () -> Bool in
-        print("current context drawing closure")
-        thumbFileViewController.view.draw(thumbFileViewController.view.bounds)
+        image.draw(in: CGRect(origin: .zero, size: request.maximumSize))
         return true
       }
-      self.handler(reply, nil)
-      print("reply sent")
+      handler(reply, nil)
     }
   }
 }

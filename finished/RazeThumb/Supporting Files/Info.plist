@@ -17,7 +17,7 @@
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.raywenderlich.RazeThumb.ThumbFile</string>
+				<string>com.razeware.rwthumbfile</string>
 			</array>
 		</dict>
 	</array>
@@ -74,16 +74,16 @@
 			<key>UTTypeDescription</key>
 			<string>Thumb File</string>
 			<key>UTTypeIconFiles</key>
-			<string></string>
+			<array/>
 			<key>UTTypeIdentifier</key>
-			<string>com.raywenderlich.RazeThumb.ThumbFile</string>
-      <key>UTTypeTagSpecification</key>
-      <dict>
-        <key>public.filename-extension</key>
-        <string>thumb</string>
-        <key>public.mime-type</key>
-        <string>public.content</string>
-      </dict>
+			<string>com.razeware.rwthumbfile</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>thumb</string>
+				</array>
+			</dict>
 		</dict>
 	</array>
 </dict>

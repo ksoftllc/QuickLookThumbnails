@@ -26,10 +26,10 @@
 		<dict>
 			<key>QLSupportedContentTypes</key>
 			<array>
-				<string>com.raywenderlich.RazeThumb.ThumbFile</string>
+				<string>com.razeware.rwthumbfile</string>
 			</array>
-      <key>QLThumbnailMinimumDimension</key>
-      <integer>150</integer>
+			<key>QLThumbnailMinimumDimension</key>
+			<integer>50</integer>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.quicklook.thumbnail</string>

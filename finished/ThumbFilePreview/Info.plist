@@ -26,7 +26,7 @@
 		<dict>
 			<key>QLSupportedContentTypes</key>
 			<array>
-				<string>com.raywenderlich.RazeThumb.ThumbFile</string>
+				<string>com.razeware.rwthumbfile</string>
 			</array>
 			<key>QLSupportsSearchableItems</key>
 			<false/>

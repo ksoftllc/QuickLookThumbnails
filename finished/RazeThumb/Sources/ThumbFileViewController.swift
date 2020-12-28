@@ -73,4 +73,39 @@ class ThumbFileViewController: UIViewController {
       imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
     ])
   }
+
+  static func generateThumbnail(for thumbFile: ThumbFile, size: CGSize) -> UIImage? {
+    let thumbFileViewController = ThumbFileViewController()
+    thumbFileViewController.view.frame = CGRect(origin: .zero, size: CGSize(width: 450, height: 450))
+    thumbFileViewController.loadThumbFileView(for: thumbFile)
+    thumbFileViewController.view.updateConstraintsIfNeeded()
+    thumbFileViewController.view.layoutIfNeeded()
+
+    return thumbFileViewController.snapshot(size: size)
+  }
+
+  func snapshot(size: CGSize) -> UIImage? {
+    UIGraphicsBeginImageContext(view.frame.size)
+    guard let context = UIGraphicsGetCurrentContext() else {
+      UIGraphicsEndImageContext()
+      return nil
+    }
+
+    view.layer.render(in: context)
+    guard let snapshot = UIGraphicsGetImageFromCurrentImageContext() else {
+      UIGraphicsEndImageContext()
+      return nil
+    }
+
+    return scaleImage(snapshot, to: size)
+  }
+
+  func scaleImage(_ snapshot: UIImage, to size: CGSize) -> UIImage? {
+    UIGraphicsEndImageContext()
+    UIGraphicsBeginImageContext(size)
+    snapshot.draw(in: CGRect(origin: .zero, size: size))
+    let scaledSnapshot = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return scaledSnapshot
+  }
 }
