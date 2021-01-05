@@ -44,7 +44,10 @@ struct ContentView: View {
           spacing: 10
         ) {
           ForEach(documents, id: \.self) { document in
-            DocumentThumbnailView(document: document)
+            NavigationLink(destination: DocumentPreviewView(document: document)) {
+              DocumentThumbnailView(document: document)
+            }
+            .navigationTitle(title)
           }
         }
       }

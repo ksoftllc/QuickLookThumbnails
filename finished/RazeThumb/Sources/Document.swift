@@ -1,4 +1,4 @@
-/// Copyright (c) 2020 Razeware LLC
+/// Copyright (c) 2021 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -95,7 +95,11 @@ extension Document {
 
 // MARK: - QLThumbnailGenerator
 extension Document {
-  func generateThumbnail(width: Int, height: Int, completion: @escaping (UIImage) -> Void) {
+  func generateThumbnail(
+    width: Int,
+    height: Int,
+    completion: @escaping (UIImage) -> Void
+  ) {
     let size = CGSize(width: width, height: height)
     let scale = UIScreen.main.scale
 
@@ -108,9 +112,10 @@ extension Document {
     let generator = QLThumbnailGenerator.shared
     generator.generateRepresentations(for: request) { thumbnail, _, error in
       if let thumbnail = thumbnail {
+        print("\(name) thumbnail generated")
         completion(thumbnail.uiImage)
       } else if let error = error {
-        print("thumbnail error for \(name) - \(error)")
+        print("\(name) - \(error)")
       }
     }
   }

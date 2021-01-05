@@ -1,4 +1,4 @@
-/// Copyright (c) 2020 Razeware LLC
+/// Copyright (c) 2021 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -32,14 +32,16 @@
 
 import UIKit
 import QuickLook
-import WebKit
 
 class PreviewViewController: ThumbFileViewController, QLPreviewingController {
   enum ThumbFilePreviewError: Error {
     case unableToOpenFile(atURL: URL)
   }
 
-  func preparePreviewOfFile(at url: URL, completionHandler handler: @escaping (Error?) -> Void) {
+  func preparePreviewOfFile(
+    at url: URL,
+    completionHandler handler: @escaping (Error?) -> Void
+  ) {
     guard let thumbFile = ThumbFile.init(from: url) else {
       handler(ThumbFilePreviewError.unableToOpenFile(atURL: url))
       return

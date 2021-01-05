@@ -45,6 +45,13 @@ struct DocumentThumbnailView: View {
         .padding()
     }
     .groupBoxStyle(PlainGroupBoxStyle())
+    .onAppear {
+      document.generateThumbnail(width: 150, height: 150) { [self] uiImage in
+        DispatchQueue.main.async {
+          self.thumbnail = Image(uiImage: uiImage)
+        }
+      }
+    }
   }
 }
 

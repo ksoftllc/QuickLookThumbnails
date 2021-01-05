@@ -30,7 +30,7 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
+import QuickLook
 
 struct Document: Hashable {
   let url: URL
@@ -88,6 +88,34 @@ extension Document {
         try FileManager.default.copyItem(at: resourceFileURL, to: destinationURL)
       } catch {
         print("error copying file \(destinationURL) to temporary directory - \(error.localizedDescription)")
+      }
+    }
+  }
+}
+
+// MARK: - QLThumbnailGenerator
+extension Document {
+  func generateThumbnail(
+    width: Int,
+    height: Int,
+    completion: @escaping (UIImage) -> Void
+  ) {
+    let size = CGSize(width: width, height: height)
+    let scale = UIScreen.main.scale
+
+    let request = QLThumbnailGenerator.Request(
+      fileAt: url,
+      size: size,
+      scale: scale,
+      representationTypes: .all)
+
+    let generator = QLThumbnailGenerator.shared
+    generator.generateRepresentations(for: request) { thumbnail, _, error in
+      if let thumbnail = thumbnail {
+        print("\(name) thumbnail generated")
+        completion(thumbnail.uiImage)
+      } else if let error = error {
+        print("\(name) - \(error)")
       }
     }
   }

@@ -1,4 +1,4 @@
-/// Copyright (c) 2020 Razeware LLC
+/// Copyright (c) 2021 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -46,9 +46,9 @@ struct DocumentThumbnailView: View {
     }
     .groupBoxStyle(PlainGroupBoxStyle())
     .onAppear {
-      document.generateThumbnail(width: 150, height: 150) { [self] thumbnailImage in
+      document.generateThumbnail(width: 150, height: 150) { [self] uiImage in
         DispatchQueue.main.async {
-          self.thumbnail = Image(uiImage: thumbnailImage)
+          self.thumbnail = Image(uiImage: uiImage)
         }
       }
     }

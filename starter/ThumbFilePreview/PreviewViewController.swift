@@ -30,26 +30,26 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
-import UIKit.UIImage
+import UIKit
+import QuickLook
 
-struct ThumbFile: Codable {
-  let title: String
-  let imageBase64: String
-
-  init?(from fileURL: URL) {
-    guard
-      let data = FileManager.default.contents(atPath: fileURL.path),
-      let thumb = try? JSONDecoder().decode(Self.self, from: data)
-    else {
-      return nil
-    }
-
-    self = thumb
+class PreviewViewController: ThumbFileViewController, QLPreviewingController {
+  enum ThumbFilePreviewError: Error {
+   case unableToOpenFile(atURL: URL)
   }
 
-  var uiImage: UIImage? {
-    return Data(base64Encoded: imageBase64)
-      .flatMap { UIImage(data: $0) }
+  func preparePreviewOfFile(
+    at url: URL,
+    completionHandler handler: @escaping (Error?) -> Void
+  ) {
+    //1
+    guard let thumbFile = ThumbFile.init(from: url) else {
+      handler(ThumbFilePreviewError.unableToOpenFile(atURL: url))
+      return
+    }
+
+    //2
+    loadThumbFileView(for: thumbFile)
+    handler(nil)
   }
 }
