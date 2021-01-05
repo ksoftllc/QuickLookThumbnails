@@ -30,9 +30,7 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import UIKit.UIScreen
-import QuickLookThumbnailing
-import QuickLook
+import Foundation
 
 struct Document: Hashable {
   let url: URL
