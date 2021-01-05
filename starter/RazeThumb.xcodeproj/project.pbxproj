@@ -48,8 +48,6 @@
 		384AEA3A2575D5070062310B /* DocumentThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentThumbnailView.swift; sourceTree = "<group>"; };
 		38627FB425A41E6F00EA6C5E /* ThumbFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbFileViewController.swift; sourceTree = "<group>"; };
 		386632832579C8BA00C07B7B /* zombiethumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zombiethumb.jpg; sourceTree = "<group>"; };
-		3867C316257D75DE00242239 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
-		3867C32E257D760700242239 /* QuickLookThumbnailing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLookThumbnailing.framework; path = System/Library/Frameworks/QuickLookThumbnailing.framework; sourceTree = SDKROOT; };
 		3867C33E257D765100242239 /* greenthumb.thumb */ = {isa = PBXFileReference; lastKnownFileType = text; path = greenthumb.thumb; sourceTree = "<group>"; };
 		3867C343257D77AD00242239 /* ThumbFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbFile.swift; sourceTree = "<group>"; };
 		386D8975257863D400D3053B /* thumbsdown.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = thumbsdown.md; sourceTree = "<group>"; };
@@ -104,8 +102,6 @@
 		3867C315257D75DE00242239 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3867C316257D75DE00242239 /* QuickLook.framework */,
-				3867C32E257D760700242239 /* QuickLookThumbnailing.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
